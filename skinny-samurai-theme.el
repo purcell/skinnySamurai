@@ -1,13 +1,9 @@
-;;; moe-light-theme.el --- An eye-candy theme for Emacser
-
-;; Author: kuanyui<azazabc123@gmail.com>
-;; Based on "tango-dark-theme" , a part of GNU Emacs 24
+;;; skinny-samurai-theme.el --- A port of Chuby Ninja Sublime Text 2 theme to Emacs
 
 ;;; Code:
 
-(deftheme moe-light
-  "Face colors for 256 colors terminal (dark background).
-Moe, moe, kyun!")
+(deftheme skinny-samurai
+  "Face colors for 256 colors terminal (dark background)")
 
 (let ((class '((class color) (min-colors 89)))
       ;; Palette colors.
@@ -15,12 +11,12 @@ Moe, moe, kyun!")
       (orange-1 "#ffaf5f") (orange-2 "#ff8700") (orange-3 "#ff5d17") (orange-4 "#d75f00")
       (magenta-1 "#ff7bbb") (magenta-2 "#ff4ea3") (magenta-3 "#ff1f8b")
       (green-1 "#afff00") (green-2 "#a1db00") (green-3 "#00af00") (green-4 "#008700") (green-5 "#005f00")
-      (blue-1 "#729fcf") (blue-2 "#1f5bff") (blue-3 "#005f87") (blue-4 "#005faf") (blue-5 "#0000af") 
+      (blue-1 "#729fcf") (blue-2 "#1f5bff") (blue-3 "#005f87") (blue-4 "#005faf") (blue-5 "#0000af")
       (cyan-1 "#87ffff") (cyan-2 "#00ffff") (cyan-3 "#00d7af") (cyan-4 "#5f87af")
       (purple-1 "#d18aff") (purple-2 "#9a08ff") (purple-3 "#6c0099")
       (red-1 "#ef2929")  (red-2 "#cc0000")  (red-3 "#a40000")
-      (white-1 "#eeeeee") (white-2 "#dadada") (white-3 "#c6c6c6") (white-4 "#b2b2b2") (LIGHT_BG "#ffffd7")
-      (black-1 "#9e9e9e") (black-2 "#8a8a8a") (black-3 "#767676")
+      (white-1 "#ffffff") (white-2 "#eeeeee") (white-3 "#c6c6c6") (white-4 "#b2b2b2") (LIGHT_BG "#ffffd7")
+      (black-1 "#000000") (black-2 "#080808") (black-3 "#1c1c1c") (DARK_BG "#121212")
 
       (green-01 "#d7ff00")
       (green-0 "#d7ff5f") (blue-0 "#afd7ff") (purple-0 "#e6a8df") (yellow-0 "#ffff87") (white-0 "#ffffff")
@@ -31,11 +27,11 @@ Moe, moe, kyun!")
    'moe-light
    ;; Ensure sufficient contrast on low-color terminals.
    `(default ((((class color) (min-colors 4096))
-	       (:foreground ,black-5 :background ,LIGHT_BG))
+	       (:foreground ,white-2 :background ,DARK_BG))
 	      (((class color) (min-colors 256))
-	       (:foreground ,black-5 :background ,LIGHT_BG))
+	       (:foreground ,white-2 :background ,DARK_BG))
 	      (,class
-	       (:foreground ,black-5 :background ,LIGHT_BG))))
+	       (:foreground ,white-2 :background ,DARK_BG))))
    `(cursor ((,class (:background ,black-5))))
 
    ;; Highlighting faces
@@ -312,7 +308,7 @@ Moe, moe, kyun!")
    `(magit-section-title ((,class (:foreground ,orange-3 :background ,LIGHT_BG :underline ,orange-3 :bold ,t))))
    `(magit-valid-signature ((,class (:foreground ,cyan-3 :background ,LIGHT_BG :bold t))))
    `(magit-whitespace-warning-face ((,class (:foreground ,white-0 :background ,red-2 :bold t))))
-   
+
    ;; Message faces
    `(message-header-name ((,class (:foreground ,blue-3))))
    `(message-header-cc ((,class (:foreground ,yellow-3))))
@@ -343,7 +339,7 @@ Moe, moe, kyun!")
 
    ;; smerge
    `(smerge-refined-change ((,class (:background ,blue-3 :foreground ,white-0))))
-   
+
    ;; Flyspell faces
    `(flyspell-duplicate ((,class (:underline t foreground-color,orange-1))))
    `(flyspell-incorrect ((,class (:background ,red-1 :foreground ,white-0 :bold t))))
@@ -400,7 +396,7 @@ Moe, moe, kyun!")
    ;; Flymake
    `(flymake-warnline ((,class (:underline ,orange-2))))
    `(flymake-errline ((,class (:underline ,red-2))))
-   
+
    ;; MMM-Mode
    `(mmm-default-submode-face ((,class (:background ,yellow-00))))
 
@@ -462,7 +458,7 @@ Moe, moe, kyun!")
 			      ,blue-1 ,purple-1 ,blue-0 ,white-0])))
 ;; fix wrong default face
 (if window-system
-    (progn 
+    (progn
       (set-background-color "#ffffd7")
       (set-foreground-color "#5f5f5f")))
 
@@ -473,5 +469,3 @@ Moe, moe, kyun!")
 ;; End:
 
 ;;; moe-light-theme.el ends here
-
-
