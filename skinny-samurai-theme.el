@@ -1,6 +1,24 @@
+
 ;;; skinny-samurai-theme.el --- A port of Chuby Ninja Sublime Text 2 theme to Emacs
 
 ;;; Code:
+
+;; face for numbers
+(defface skinny-samurai-numbers-face
+  '((((class color) (background dark))
+     (:bold t :foreground "#ff0087"))
+    (((class color) (background light))
+     (:bold t :foreground "#ff0087")))
+  "Face used to color numbers."
+  :group 'my-faces)
+
+;; TODO: For some reason my numbers face is NOT working!?!
+;; Neither the mapcar construct or the bare font-lock-add-keywords is working.
+(mapcar
+    (lambda (mode)
+      (font-lock-add-keywords mode '(("\\_<[0-9]+\\_>" . 'skinny-samurai-numbers-face))))
+  '(python-mode emacs-lisp-mode lisp-mode perl-mode shell-mode))
+;; (font-lock-add-keywords nil '(("\\_<[0-9]+\\_>" . 'skinny-samurai-numbers-face)))
 
 (deftheme skinny-samurai
   "Face colors for 256 colors terminal (dark background)")
@@ -9,6 +27,7 @@
       ;; Palette colors.
       (yellow-1 "#fce94f") (yellow-2 "#ffd700") (yellow-3 "#c4a000") (yellow-4 "#875f00")
       (orange-1 "#ffaf5f") (orange-2 "#ff8700") (orange-3 "#ff5d17") (orange-4 "#d75f00")
+      (string-orange-1 "#ffaf87")
       (magenta-1 "#ff7bbb") (magenta-2 "#ff4ea3") (magenta-3 "#ff1f8b")
       (green-1 "#afff00") (green-2 "#a1db00") (green-3 "#00af00") (green-4 "#008700") (green-5 "#005f00")
       (blue-1 "#729fcf") (blue-2 "#1f5bff") (blue-3 "#005f87") (blue-4 "#005faf") (blue-5 "#0000af")
@@ -17,6 +36,8 @@
       (red-1 "#ef2929")  (red-2 "#cc0000")  (red-3 "#a40000")
       (white-1 "#ffffff") (white-2 "#eeeeee") (white-3 "#c6c6c6") (white-4 "#b2b2b2") (LIGHT_BG "#ffffd7")
       (black-1 "#000000") (black-2 "#080808") (black-3 "#1c1c1c") (DARK_BG "#121212")
+      ;; (grey-1 "#585858")
+      (grey-1 "#585858") (grey-2 "#808080")
 
       (green-01 "#d7ff00")
       (green-0 "#d7ff5f") (blue-0 "#afd7ff") (purple-0 "#e6a8df") (yellow-0 "#ffff87") (white-0 "#ffffff")
@@ -24,7 +45,7 @@
       (green-00 "#d7ff87") (yellow-00 "#ffffaf") (blue-00 "#d7d7ff"))
 
   (custom-theme-set-faces
-   'moe-light
+   'skinny-samurai
    ;; Ensure sufficient contrast on low-color terminals.
    `(default ((((class color) (min-colors 4096))
 	       (:foreground ,white-2 :background ,DARK_BG))
@@ -33,6 +54,9 @@
 	      (,class
 	       (:foreground ,white-2 :background ,DARK_BG))))
    `(cursor ((,class (:background ,black-5))))
+
+   ;; TODO: For some reason my numbers face is NOT working!?!
+   `(skinny-samurai-numbers-face ((,class (:foreground ,magenta-1 :weight bold))))
 
    ;; Highlighting faces
    `(fringe ((,class (:foreground ,black-1 :background "#d7d7af"))))
@@ -48,11 +72,11 @@
    ;; Mode line & frames' faces
    `(mode-line ((,class
 		 (:box (:line-width -1 :style nil)
-		  :background ,blue-1 :foreground ,white-0))))
+		  :background ,grey-1 :foreground ,white-0))))
    `(mode-line-inactive ((,class
 			  (:box (:line-width -1 :style nil)
 			   :background ,white-2 :foreground ,black-1))))
-   `(mode-line-buffer-id ((,class (:foreground ,black-6 :background ,blue-1 :bold t))))
+   `(mode-line-buffer-id ((,class (:foreground ,white-0 :background ,grey-1 :bold t))))
    `(vertical-border ((,class (:foreground "#d7d7af" :background "#d7d7af"))))
 
    ;; Escape and prompt faces
@@ -64,8 +88,8 @@
 
    ;; Font lock faces
    `(font-lock-builtin-face ((,class (:foreground ,purple-2))))
-   `(font-lock-comment-delimiter-face ((,class (:foreground ,red-2 :slant italic))))
-   `(font-lock-comment-face ((,class (:foreground ,red-2 :slant italic))))
+   `(font-lock-comment-delimiter-face ((,class (:foreground ,grey-1 :slant italic)))) ;done
+   `(font-lock-comment-face ((,class (:foreground ,grey-1 :slant italic :slant italic)))) ;done
    `(font-lock-constant-face ((,class (:foreground ,blue-2))))
    `(font-lock-doc-face ((,class (:foreground ,red-2))))
    `(font-lock-doc-string-face ((,class (:foreground ,yellow-3))))
@@ -75,7 +99,7 @@
    `(font-lock-preprocessor-face ((,class (:foreground ,purple-2))))
    `(font-lock-regexp-grouping-backslash ((,class (:foreground ,orange-2))))
    `(font-lock-regexp-grouping-construct ((,class (:foreground ,purple-2))))
-   `(font-lock-string-face ((,class (:foreground ,magenta-3))))
+   `(font-lock-string-face ((,class (:foreground ,string-orange-1)))) ;done
    `(font-lock-type-face ((,class (:foreground ,blue-2))))
    `(font-lock-variable-name-face ((,class (:foreground ,orange-2))))
    `(font-lock-warning-face ((,class (:weight bold :foreground ,red-2))))
@@ -453,7 +477,7 @@
 )
 
   (custom-theme-set-variables
-   'moe-light
+   'skinny-samurai
    `(ansi-color-names-vector [,black-5 ,red-0 ,green-0 ,yellow-1
 			      ,blue-1 ,purple-1 ,blue-0 ,white-0])))
 ;; fix wrong default face
@@ -462,10 +486,10 @@
       (set-background-color "#ffffd7")
       (set-foreground-color "#5f5f5f")))
 
-(provide-theme 'moe-light)
+(provide-theme 'skinny-samurai)
 
 ;; Local Variables:
 ;; no-byte-compile: t
 ;; End:
 
-;;; moe-light-theme.el ends here
+;;; skinny-samurai-theme.el ends here
