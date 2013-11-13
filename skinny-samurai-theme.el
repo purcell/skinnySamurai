@@ -1,18 +1,35 @@
 
+
+
+
 ;;; skinny-samurai-theme.el --- A port of Chuby Ninja Sublime Text 2 theme to Emacs
+
+
 
 ;;; Code:
 
+
+
 ;; face for numbers
+
 (defface skinny-samurai-numbers-face
+
   '((((class color) (background dark))
+
      (:bold t :foreground "#ff0087"))
+
     (((class color) (background light))
+
      (:bold t :foreground "#ff0087")))
+
   "Face used to color numbers."
+
   :group 'my-faces)
 
+
+
 ;; TODO: For some reason my numbers face is NOT working!?!
+
 ;; Neither the mapcar construct or the bare font-lock-add-keywords is working.
 (mapcar
     (lambda (mode)
