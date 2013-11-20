@@ -44,8 +44,8 @@
       ;; Palette colors.
       (yellow-1 "#fce94f") (yellow-2 "#ffd700") (yellow-3 "#c4a000") (yellow-4 "#875f00")
       (orange-1 "#ffaf5f") (orange-2 "#ff8700") (orange-3 "#ff5d17") (orange-4 "#d75f00")
-      (string-orange-1 "#ffaf87")
-      (magenta-1 "#ff7bbb") (magenta-2 "#ff4ea3") (magenta-3 "#ff1f8b")
+      (string-orange-1 "#ff9580")
+      (magenta-1 "#ff7bbb") (magenta-2 "#ff4ea3") (magenta-3 "#ff1f8b") (magenta-4 "#5f005f")
       (green-1 "#afff00") (green-2 "#a1db00") (green-3 "#00af00") (green-4 "#008700") (green-5 "#005f00")
       (blue-1 "#729fcf") (blue-2 "#1f5bff") (blue-3 "#005f87") (blue-4 "#005faf") (blue-5 "#0000af")
       (cyan-1 "#87ffff") (cyan-2 "#00ffff") (cyan-3 "#00d7af") (cyan-4 "#5f87af")
@@ -54,10 +54,10 @@
       (white-1 "#ffffff") (white-2 "#eeeeee") (white-3 "#c6c6c6") (white-4 "#b2b2b2") (LIGHT_BG "#ffffd7")
       (black-1 "#000000") (black-2 "#080808") (black-3 "#1c1c1c") (DARK_BG "#121212")
       ;; (grey-1 "#585858")
-      (grey-1 "#585858") (grey-2 "#808080")
+      (grey-1 "#585858") (grey-2 "#808080") (grey-3 "#999999")
 
-      (green-01 "#d7ff00")
-      (green-0 "#d7ff5f") (blue-0 "#afd7ff") (purple-0 "#e6a8df") (yellow-0 "#ffff87") (white-0 "#ffffff")
+      (green-01 "#d7ff00") (green-02 "#2e4d0f")
+      (green-0 "#d7ff5f") (blue-0 "#afd7ff") (purple-0 "#e6a8df") (yellow-0 "#ffff87") (white-0 "#ffffff") (white-01 "#cbcbcb")
       (red-0 "#ff4b4b")  (black-4 "#626262") (black-5 "#5f5f5f") (black-6 "#3a3a3a") (orange-0 "#ffaf87") (magenta-0 "#ffafd7")
       (green-00 "#d7ff87") (yellow-00 "#ffffaf") (blue-00 "#d7d7ff"))
 
@@ -76,11 +76,11 @@
    `(skinny-samurai-numbers-face ((,class (:foreground ,magenta-1 :weight bold))))
 
    ;; Highlighting faces
-   `(fringe ((,class (:foreground ,black-1 :background "#d7d7af"))))
-   `(linum ((,class (:foreground "#87875f" :background "#d7d7af"))))
+   `(fringe ((,class (:foreground ,black-1 :background "#151515"))))
+   `(linum ((,class (:foreground "#a8a8a8" :background "#151515"))))
    `(highlight ((,class (:background ,green-0))))
-   `(hl-line ((,class (:background ,green-00)))) ; Embedded strings of IM (e.g. fcitx) would be very unreadable... orz
-   `(region ((,class (:foreground ,white-0 :background ,blue-1))))
+   `(hl-line ((,class (:background ,magenta-4 :weight bold)))) ; Embedded strings of IM (e.g. fcitx) would be very unreadable... orz
+   `(region ((,class (:background ,green-02))))
    `(secondary-selection ((,class (:background ,blue-3 :foreground ,white-0))))
    `(isearch ((,class (:foreground ,white-0 :background ,orange-3))))
    `(lazy-highlight ((,class (:background ,magenta-3 :foreground ,white-0))))
@@ -108,8 +108,8 @@
    `(font-lock-comment-delimiter-face ((,class (:foreground ,grey-1 :slant italic)))) ;done
    `(font-lock-comment-face ((,class (:foreground ,grey-1 :slant italic :slant italic)))) ;done
    `(font-lock-constant-face ((,class (:foreground ,blue-2))))
-   `(font-lock-doc-face ((,class (:foreground ,red-2))))
-   `(font-lock-doc-string-face ((,class (:foreground ,yellow-3))))
+   `(font-lock-doc-face ((,class (:foreground ,grey-3))))
+   `(font-lock-doc-string-face ((,class (:foreground ,grey-3))))
    `(font-lock-function-name-face ((,class (:foreground ,orange-2))))
    `(font-lock-keyword-face ((,class (:foreground ,green-3))))
    `(font-lock-negation-char-face ((,class (:foreground ,green-3))))
