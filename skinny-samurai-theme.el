@@ -157,7 +157,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(rainbow-delimiters-depth-7-face ((t (:bold t :foreground ,skinny-purple-2))))
    `(rainbow-delimiters-depth-8-face ((t (:bold t :foreground ,skinny-fg))))
    `(rainbow-delimiters-depth-9-face ((t (:bold t :foreground ,skinny-yellow+2))))
-   `(rainbow-delimiters-unmatched-face ((t (:foreground ,skinny-fg :background ,red-3 :weight bold))))
+   `(rainbow-delimiters-unmatched-face ((t (:foreground ,skinny-fg :background ,skinny-red+1 :weight bold))))
 
 ))
 
