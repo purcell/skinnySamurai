@@ -65,7 +65,9 @@
 
     ("skinny-blue"    . "#00afff")
     ("skinny-blue-1"  . "#0087ff")
+    ("skinny-blue")
 
+    ("skinny-green+6" . "#00af00")
     ("skinny-green+5" . "#00ff5f")
     ("skinny-green+4" . "#00df5f")
     ("skinny-green+3" . "#87df87")
@@ -82,6 +84,7 @@
     ("skinny-orange+2". "#ff5f00")
 
     ("skinny-purple"  . "#af87af")
+    ("skinny-purple-2". "#5f0087")
 
     ("skinny-red"     . "#800000")
     ("skinny-red+1"   . "#ff0000")
@@ -143,6 +146,18 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(font-lock-type-face ((t (:foreground ,skinny-blue-1))))
    `(font-lock-variable-name-face ((t (:foreground ,skinny-orange))))
    `(font-lock-warning-face ((t (:foreground ,skinny-yellow :weight bold))))
+
+   ;; Rainbow-delimiters
+   `(rainbow-delimiters-depth-1-face ((t (:bold t :foreground ,skinny-green+5))))
+   `(rainbow-delimiters-depth-2-face ((t (:bold t :foreground ,skinny-blue-1))))
+   `(rainbow-delimiters-depth-3-face ((t (:bold t :foreground ,skinny-red+1))))
+   `(rainbow-delimiters-depth-4-face ((t (:bold t :foreground ,skinny-magenta))))
+   `(rainbow-delimiters-depth-5-face ((t (:bold t :foreground ,skinny-cyan-2))))
+   `(rainbow-delimiters-depth-6-face ((t (:bold t :foreground ,skinny-orange))))
+   `(rainbow-delimiters-depth-7-face ((t (:bold t :foreground ,skinny-purple-2))))
+   `(rainbow-delimiters-depth-8-face ((t (:bold t :foreground ,skinny-fg))))
+   `(rainbow-delimiters-depth-9-face ((t (:bold t :foreground ,skinny-yellow+2))))
+   `(rainbow-delimiters-unmatched-face ((t (:foreground ,skinny-fg :background ,red-3 :weight bold))))
 
 ))
 
