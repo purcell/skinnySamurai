@@ -54,6 +54,7 @@
 ;;; Color Palette
 (defvar skinny-samurai-colors-alist
   '(("skinny-fg"      . "#eeeeee")
+    ("skinny-fg-1"    . "#dadada")
     ("skinny-bg+2"    . "#303030")
     ("skinny-bg+1"    . "#262626")
     ("skinny-bg"      . "#121212")
@@ -61,11 +62,11 @@
     ("skinny-bg-2"    . "#000000")
 
     ("skinny-cyan"    . "#afffff")
+    ("skinny-cyan-1"  . "#00ffdf")
     ("skinny-cyan-2"  . "#00dfff")
 
     ("skinny-blue"    . "#00afff")
     ("skinny-blue-1"  . "#0087ff")
-    ("skinny-blue")
 
     ("skinny-green+6" . "#00af00")
     ("skinny-green+5" . "#00ff5f")
@@ -93,6 +94,29 @@
     ("skinny-yellow"  . "#ffff5f")
     ("skinny-yellow+2". "#ffffaf")
 
+    ("cyberpunk-blue-1" . "#7b68ee")
+    ("cyberpunk-orange" . "#ffa500")
+    ("cyberpunk-blue-3" . "#add8e6")  ;; light blue
+    ("cyberpunk-black" . "#000000")
+    ("cyberpunk-gray-2" . "#8B8989")
+    ("cyberpunk-orange-2" . "#FF6400")
+    ("cyberpunk-blue-7" . "#00ffff")
+    ("cyberpunk-pink-1" . "#ff1493")
+    ("cyberpunk-pink-2" . "#cd1076")
+    ("cyberpunk-yellow" . "#ffff00")
+    ("cyberpunk-blue-5" . "#4c83ff")
+    ("cyberpunk-green" . "#00ff00")
+    ("cyberpunk-pink" . "#ff69b4")
+    ("cyberpunk-green+3" . "#afd8af")
+    ("cyberpunk-blue+1" . "#94bff3")
+    ("cyberpunk-blue-6" . "#96CBFE")
+    ("cyberpunk-yellow-3" . "#D8FA3C")
+    ("cyberpunk-bg-1" . "#2b2b2b")
+    ("cyberpunk-fg" . "#dcdccc")
+    ("cyberpunk-bg-05" . "#383838")
+
+
+
     )
   "List of skinny-samurai colors.
 
@@ -114,20 +138,37 @@ Also bind `class' to ((class color) (min-colors 89))."
   'skinny-samurai
 
 ;;;; Basic coloring
+  ; `(border ((,class (:background ,current-line))))
+  ; `(border-glyph ((,class (nil))))
   '(button ((t (:underline t))))
-  `(default ((t (:foreground ,skinny-fg :background ,skinny-bg-1))))
-  `(link ((t (:foreground ,skinny-yellow :underline t :weight bold))))
-  `(link-visited ((t (:foreground ,skinny-yellow :underline t :weight normal))))
   `(cursor ((t (:foreground ,skinny-fg :background ,skinny-magenta))))
+  `(default ((t (:foreground ,skinny-fg :background ,skinny-bg-1))))
+  `(error ((t (:foreground ,skinny-bg-2 :background ,skinny-red+1 :weight bold))))
   `(escape-glyph ((t (:foreground ,skinny-yellow :bold t))))
   `(fringe ((t (:foreground ,skinny-fg :background ,skinny-bg-1))))
+  ; `(gui-element ((,class (:background ,current-line :foreground ,foreground))))
   `(header-line ((t (:foreground ,skinny-yellow
 				 :background ,skinny-bg-1
 				 :box (:line-width -1 :style released-button)))))
   `(highlight ((t (:background ,skinny-bg+2))))
-  `(region ((t (:foreground ,skinny-green+5 :background ,skinny-green+3))))
+  `(link ((t (:foreground ,skinny-yellow :underline t :weight bold))))
+  `(link-visited ((t (:foreground ,skinny-yellow :underline t :weight normal))))
+  ;`(linum ((,class (:background ,current-line :foreground ,green))))
+  `(minibuffer-prompt ((t (:foreground ,skinny-cyan-1 :weight bold :height 1.1))))
+  `(mode-line ((t (:foreground nil :background ,skinny-bg
+                                    :box (:line-width 1 :color ,skinny-fg)
+                                    :family "Lucida Grande"))))
+  `(mode-line-buffer-id ((t (:foreground ,skinny-purple :background nil :weight bold))))
+  `(mode-line-inactive ((t (:inherit mode-line
+                                          :foreground ,skinny-grey+2
+                                          :background ,skinny-bg+2 :weight normal
+                                          :box (:line-width 1 :color ,skinny-fg-1)))))
+  `(mode-line-emphasis ((t (:foreground ,skinny-fg :slant italic))))
+  `(mode-line-highlight ((t (:foreground ,skinny-purple :box nil))))
+  `(region ((t (:foreground ,skinny-green+5 :background ,skinny-bg+1))))
+  ;`(secondary-selection ((,class (:background ,current-line))))
   `(success ((t (:foreground ,skinny-green :weight bold))))
-  `(warning ((t (:foreground ,skinny-red+1 :weight bold))))
+  `(warning ((t (:foreground ,skinny-yellow :background ,skinny-red+1 :weight bold))))
 
 ;;;;; font lock
    `(font-lock-builtin-face ((t (:foreground ,skinny-green+3 :weight bold))))
@@ -158,6 +199,67 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(rainbow-delimiters-depth-8-face ((t (:bold t :foreground ,skinny-fg))))
    `(rainbow-delimiters-depth-9-face ((t (:bold t :foreground ,skinny-yellow+2))))
    `(rainbow-delimiters-unmatched-face ((t (:foreground ,skinny-fg :background ,skinny-red+1 :weight bold))))
+
+   ;; org-mode
+   `(org-document-title ((t (:foreground ,cyberpunk-blue-3 :background ,cyberpunk-black :weight bold :height 1.5))))
+   `(org-document-info ((t (:foreground ,cyberpunk-blue-3 :background ,cyberpunk-black :weight bold))))
+   `(org-document-info-keyword ((t (:foreground ,cyberpunk-gray-2 :background ,cyberpunk-black))))
+   `(org-agenda-date-today
+     ((t (:foreground ,cyberpunk-orange-2 :slant italic :weight bold))) t)
+   `(org-agenda-structure
+     ((t (:inherit font-lock-comment-face))))
+   `(org-archived ((t (:slant italic))))
+   `(org-checkbox ((t (:background ,cyberpunk-gray-2 :foreground ,cyberpunk-black
+                                   :box (:line-width 1 :style released-button)))))
+   `(org-date ((t (:foreground ,cyberpunk-blue-7 :underline t))))
+   `(org-done ((t (:bold t :weight bold :foreground ,cyberpunk-green
+                              :box (:line-width 1 :style none)))))
+   `(org-todo ((t (:bold t :foreground ,cyberpunk-orange :weight bold
+                              :box (:line-width 1 :style none)))))
+   `(org-level-1 ((t (:foreground ,cyberpunk-pink-1 :height 1.3))))
+   `(org-level-2 ((t (:foreground ,cyberpunk-yellow :height 1.2))))
+   `(org-level-3 ((t (:foreground ,cyberpunk-blue-5 :height 1.1))))
+   `(org-level-4 ((t (:foreground ,cyberpunk-green))))
+   `(org-level-5 ((t (:foreground ,cyberpunk-orange))))
+   `(org-level-6 ((t (:foreground ,cyberpunk-pink))))
+   `(org-level-7 ((t (:foreground ,cyberpunk-green+3))))
+   `(org-level-8 ((t (:foreground ,cyberpunk-blue-1))))
+   `(org-link ((t (:foreground ,cyberpunk-blue-6 :underline t))))
+   `(org-tag ((t (:bold t :weight bold))))
+   `(org-column ((t (:background ,cyberpunk-yellow-3 :foreground ,cyberpunk-black))))
+   `(org-column-title ((t (:background ,cyberpunk-bg-1 :underline t :weight bold))))
+   `(org-block ((t (:foreground ,cyberpunk-fg :background ,cyberpunk-bg-05))))
+   `(org-block-begin-line
+     ((t (:foreground "#008ED1" :background ,cyberpunk-bg-1))))
+   `(org-block-background ((t (:background ,cyberpunk-bg-05))))
+   `(org-block-end-line
+     ((t (:foreground "#008ED1" :background ,cyberpunk-bg-1))))
+
+   ;; `(org-deadline-announce ((,class (:foreground ,cyberpunk-red-1))))
+   ;; `(org-scheduled ((,class (:foreground ,cyberpunk-green+4))))
+   ;; `(org-scheduled-previously ((,class (:foreground ,cyberpunk-red-4))))
+   ;; `(org-scheduled-today ((,class (:foreground ,cyberpunk-blue+1))))
+   ;; `(org-special-keyword ((,class (:foreground ,cyberpunk-yellow-1))))
+   ;; `(org-table ((,class (:foreground ,cyberpunk-green+2))))
+   ;; `(org-time-grid ((,class (:foreground ,cyberpunk-orange))))
+   ;; `(org-upcoming-deadline ((,class (:inherit font-lock-keyword-face))))
+   ;; `(org-warning ((,class (:bold t :foreground ,cyberpunk-red :weight bold :underline nil))))
+   ;; `(org-formula ((,class (:foreground ,cyberpunk-yellow-2))))
+   ;; `(org-headline-done ((,class (:foreground ,cyberpunk-green+3))))
+   ;; `(org-hide ((,class (:foreground ,cyberpunk-bg-1))))
+
+   ;; outline
+   `(outline-8 ((t (:inherit default))))
+   `(outline-7 ((t (:inherit outline-8 :height 1.0))))
+   `(outline-6 ((t (:inherit outline-7 :height 1.0))))
+   `(outline-5 ((t (:inherit outline-6 :height 1.0))))
+   `(outline-4 ((t (:inherit outline-5 :height 1.0))))
+   `(outline-3 ((t (:inherit outline-4 :height 1.0))))
+   `(outline-2 ((t (:inherit outline-3 :height 1.0))))
+   `(outline-1 ((t (:inherit outline-2 :height 1.0))))
+
+
+
 
 ))
 
